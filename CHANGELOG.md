@@ -4,6 +4,8 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+## [0.10.1] - 2026-09-06
+
 ### Removed
 
 - Removed inactive Auto-Compact v2 reducer implementations and stale reducer type names with no active planner path/caller (`state-compress`, `scored-tool`, `intelligent-prune`, plus already-removed `snip`/`ast-skeleton` compatibility names). The runtime contract is now exactly `dedupe -> stale-tool -> summarize -> drop`.
