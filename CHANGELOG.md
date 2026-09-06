@@ -22,6 +22,8 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 
+- Route OpenCode Zen Responses API models, including Muse Spark Contributor Free, through `/responses` instead of the generic `/chat/completions` adapter.
+
 - Added CI debt ratchets for runtime circular imports and `@ts-expect-error` directives. The circular detector now excludes type-only imports/exports, reducing the meaningful runtime-cycle baseline from the previous noisy 1,329 report to 337; suppression debt is locked at 1,372 and both baselines may only move downward.
 
 ### Fixed

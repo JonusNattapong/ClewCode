@@ -7,6 +7,7 @@ import { KiloCodeProvider } from './providers/KiloCodeProvider.js';
 import { OllamaProvider } from './providers/OllamaProvider.js';
 import { OpenAICompatibleProvider } from './providers/OpenAICompatibleProvider.js';
 import { OpenAIProvider } from './providers/OpenAIProvider.js';
+import { OpenCodeProvider } from './providers/OpenCodeProvider.js';
 import { OpenRouterProvider } from './providers/OpenRouterProvider.js';
 import type { ProviderId, ProviderInterface } from './providers/ProviderInterface.js';
 
@@ -56,6 +57,8 @@ function createProvider(key: string, entry: any): ProviderInterface {
       return new KiloCodeProvider();
     case 'ollama':
       return new OllamaProvider();
+    case 'opencode':
+      return new OpenCodeProvider();
     case 'custom':
       return new OpenAICompatibleProvider(entry.providerId, entry.label, entry.envKey, entry.defaultBaseUrl);
     default:

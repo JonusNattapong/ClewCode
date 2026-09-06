@@ -385,7 +385,7 @@ function stringifyReasoningContent(value: unknown): string {
   return '';
 }
 
-class OpenAICompatibleAdapter implements ProviderAdapter {
+export class OpenAICompatibleAdapter implements ProviderAdapter {
   readonly label: string;
   private client: any;
   private providerId: string;

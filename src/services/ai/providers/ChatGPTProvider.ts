@@ -27,7 +27,7 @@ import type { ProviderClient, ProviderInitOptions, ProviderInterface } from './P
 const CODEX_AUTH_PATH = join(homedir(), '.codex', 'auth.json');
 const CHATGPT_PROVIDER_ID = 'chatgpt' as const;
 
-type ResponsesClient = {
+export type ResponsesClient = {
   responses: {
     create(params: Record<string, unknown>, options?: { signal?: AbortSignal }): Promise<unknown>;
   };
@@ -274,11 +274,13 @@ export class ChatGPTProvider implements ProviderInterface {
   }
 }
 
-class ChatGPTResponsesAdapter implements ProviderAdapter {
-  readonly label = 'ChatGPT';
+export class ChatGPTResponsesAdapter implements ProviderAdapter {
   readonly streamTimeoutMs = 60_000;
 
-  constructor(private readonly client: ResponsesClient) {}
+  constructor(
+    private readonly client: ResponsesClient,
+    readonly label = 'ChatGPT',
+  ) {}
 
   async createMessage(params: BetaMessageStreamParams, options?: { signal?: AbortSignal }): Promise<BetaMessage> {
     const response = await this.client.responses.create(this.convertToResponses(params, false), options);
